@@ -1,4 +1,3 @@
-import argparse
 import os
 import requests
 import subprocess
@@ -83,19 +82,7 @@ def download_special_source():
     jar = "SpecialSource-1.10.0.jar"
     license = "SPECIAL_SOURCE_LICENSE"
 
-    need_download = False
-    if not Path(javadoc).exists():
-        need_download = True
-    if not Path(shaded).exists():
-        need_download = True
-    if not Path(sources).exists():
-        need_download = True
-    if not Path(jar).exists():
-        need_download = True
-    if not Path(license).exists():
-        need_download = True
-
-    if need_download:
+    if not Path(javadoc).exists() or not Path(shaded).exists() or not Path(sources).exists() or not Path(jar).exists() or not Path(license).exists():
         permission_granted = False
         while not permission_granted:
             reply = str(input("Would you like to download Special Source? [Y/N]: ")).lower().strip()[:1]
@@ -108,7 +95,6 @@ def download_special_source():
         download_file_if_needed("https://repo1.maven.org/maven2/net/md-5/SpecialSource/1.10.0/SpecialSource-1.10.0-sources.jar", sources)
         download_file_if_needed("https://repo1.maven.org/maven2/net/md-5/SpecialSource/1.10.0/SpecialSource-1.10.0.jar", jar)
         download_file_if_needed("https://raw.githubusercontent.com/md-5/SpecialSource/master/LICENSE", license)
-
     return True
 
 def download_cfr():
@@ -117,17 +103,7 @@ def download_cfr():
     jar = "cfr-0.152.jar"
     license = "CFR_LICENSE"
 
-    need_download = False
-    if not Path(javadoc).exists():
-        need_download = True
-    if not Path(sources).exists():
-        need_download = True
-    if not Path(jar).exists():
-        need_download = True
-    if not Path(license).exists():
-        need_download = True
-
-    if need_download:
+    if not Path(javadoc).exists() or not Path(sources).exists() or not Path(jar).exists() or not Path(license).exists():
         permission_granted = False
         while not permission_granted:
             reply = str(input("Would you like to download CFR? [Y/N]: ")).lower().strip()[:1]
